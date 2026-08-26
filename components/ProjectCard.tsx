@@ -1,4 +1,9 @@
-export default function ProjectCard(props) {
+type ProjectCardProps = {
+    title: string;
+    description: string;
+};
+
+export default function ProjectCard(props: ProjectCardProps) {
     return (
         <div>
             <h3>{props.title}</h3>
