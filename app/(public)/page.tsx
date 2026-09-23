@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import type { Project, ProjectStatus } from "@/lib/types";
-import Avatar from "@/components/Avatar";
-import OrbitMark from "@/components/OrbitMark";
-import PlotMark from "@/components/PlotMark";
 
 const STATUS_LABEL: Record<ProjectStatus, string> = {
   shipped: "shipped",
@@ -35,45 +32,14 @@ export default async function HomePage() {
     idea: list.filter((p) => p.status === "idea").length,
   };
 
-  const currentlyBuilding = list.find((p) => p.status === "in-progress");
-
   return (
     <div className="mx-auto max-w-3xl px-6">
-      <section className="flex flex-col gap-8 pb-14 pt-16 sm:flex-row sm:items-start">
-        <Avatar />
-
-        <div>
-          <div className="mb-4 flex items-center gap-3 text-muted">
-            <OrbitMark className="h-6 w-6" />
-            <PlotMark className="h-6 w-6" />
-          </div>
-          <p className="max-w-[58ch] text-[1.02rem] leading-[1.65] text-ink">
-            I&apos;m Stephane — a computational science and software
-            engineering student in Kigali, originally from Cameroon. Most
-            days I&apos;m somewhere between debugging a gravitational
-            simulator and untangling a machine learning pipeline, but the
-            same discipline shows up outside the terminal too: I train in
-            karate (black belt), and I serve as choir maestro and lead
-            singer in my parish choir — a role I&apos;ve held since
-            childhood. I&apos;m also active in organizing the Cameroonian
-            community here in Rwanda.
-          </p>
-
-          <div className="mt-5 flex flex-col gap-1 font-[family-name:var(--font-mono)] text-[0.8rem] text-muted">
-            {currentlyBuilding && (
-              <span>
-                Currently building:{" "}
-                <span className="text-ink">{currentlyBuilding.title}</span>
-              </span>
-            )}
-            <span>Choir practice: Tue &amp; Thu</span>
-            <span>Training: karate</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-hairline pt-8">
-        <p className="mb-8 font-[family-name:var(--font-mono)] text-[0.82rem] text-muted">
+      <section className="pb-10 pt-16">
+        <h1 className="mb-7 max-w-[34ch] font-[family-name:var(--font-display)] text-[clamp(1.6rem,3.4vw,2.15rem)] italic leading-[1.32] tracking-tight text-ink">
+          Building toward computational science — simulations, machine
+          learning, and a couple of worlds besides.
+        </h1>
+        <p className="font-[family-name:var(--font-mono)] text-[0.82rem] text-muted">
           <strong className="font-medium text-ink">{counts.shipped}</strong>{" "}
           shipped
           <span className="mx-2.5 text-hairline">·</span>
@@ -83,7 +49,9 @@ export default async function HomePage() {
           <strong className="font-medium text-ink">{counts.idea}</strong>{" "}
           ideas
         </p>
+      </section>
 
+      <section className="border-t border-hairline">
         {list.length === 0 ? (
           <p className="py-10 text-sm text-muted">
             No projects yet — add one from the admin panel.
