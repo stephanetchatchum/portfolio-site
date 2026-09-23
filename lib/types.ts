@@ -18,3 +18,17 @@ export interface Project {
   created_at: string;
   updated_at: string;
 }
+
+export type BlogPostType = "general" | "project-update";
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  post_type: BlogPostType;
+  project_id: string | null;
+  content: unknown | null; // plain text for now, Tiptap JSON later
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}

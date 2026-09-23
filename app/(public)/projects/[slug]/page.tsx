@@ -23,22 +23,26 @@ export default async function ProjectDetailPage({
   const p = project as Project;
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-12">
-      <p className="mb-2 text-xs uppercase tracking-wide text-gray-500">
+    <div className="mx-auto max-w-3xl px-6 py-16">
+      <p className="mb-3 font-[family-name:var(--font-mono)] text-[0.78rem] text-muted">
         {p.status}
       </p>
-      <h1 className="mb-4 text-2xl font-semibold">{p.title}</h1>
+      <h1 className="mb-5 font-[family-name:var(--font-display)] text-3xl font-medium text-ink">
+        {p.title}
+      </h1>
 
       {p.short_description && (
-        <p className="mb-6 text-gray-700">{p.short_description}</p>
+        <p className="mb-6 max-w-[60ch] text-[1.02rem] text-muted">
+          {p.short_description}
+        </p>
       )}
 
       {p.tech_stack.length > 0 && (
-        <div className="mb-6 flex flex-wrap gap-2">
+        <div className="mb-8 flex flex-wrap gap-2">
           {p.tech_stack.map((t) => (
             <span
               key={t}
-              className="rounded border border-gray-300 px-2 py-0.5 text-xs text-gray-600"
+              className="rounded border border-hairline px-1.5 py-0.5 font-[family-name:var(--font-mono)] text-[0.72rem] text-muted"
             >
               {t}
             </span>
@@ -46,13 +50,13 @@ export default async function ProjectDetailPage({
         </div>
       )}
 
-      <div className="mb-6 flex gap-4 text-sm">
+      <div className="mb-10 flex gap-5 border-t border-hairline pt-6 text-sm">
         {p.deploy_link && (
           <a
             href={p.deploy_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-status-shipped hover:underline"
           >
             Live demo
           </a>
@@ -62,7 +66,7 @@ export default async function ProjectDetailPage({
             href={p.repo_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-status-shipped hover:underline"
           >
             Source
           </a>
@@ -72,15 +76,14 @@ export default async function ProjectDetailPage({
             href={p.vlog_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-status-shipped hover:underline"
           >
             Vlog
           </a>
         )}
       </div>
 
-      {/* build_notes is stored as Tiptap JSON once the rich text editor
-          is wired in. For now it's unused until that piece is built. */}
-    </main>
+      {/* build_notes renders here once the rich text editor is wired in */}
+    </div>
   );
 }

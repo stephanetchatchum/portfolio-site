@@ -28,6 +28,8 @@ export default function AdminProjectsPage() {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
+  // Form state — kept simple for v1; build_notes stays a plain textarea
+  // until the Tiptap editor is wired in.
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState<ProjectStatus>("idea");
   const [shortDescription, setShortDescription] = useState("");
