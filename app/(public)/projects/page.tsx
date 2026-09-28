@@ -26,7 +26,7 @@ export default async function ProjectsPage() {
 
   if (error) {
     return (
-      <div className="mx-auto max-w-3xl px-6 py-16">
+      <div className="mx-auto max-w-5xl px-6 py-16">
         <p className="text-sm text-muted">
           Couldn&apos;t load projects: {error.message}
         </p>
@@ -37,7 +37,7 @@ export default async function ProjectsPage() {
   const list = (projects ?? []) as Project[];
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-5xl px-6 py-16">
       <h1 className="mb-8 font-[family-name:var(--font-display)] text-2xl font-medium text-ink">
         Work
       </h1>

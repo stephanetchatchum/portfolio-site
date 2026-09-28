@@ -23,7 +23,7 @@ export default async function ProjectDetailPage({
   const p = project as Project;
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-5xl px-6 py-16">
       <p className="mb-3 font-[family-name:var(--font-mono)] text-[0.78rem] text-muted">
         {p.status}
       </p>

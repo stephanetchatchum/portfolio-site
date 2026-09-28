@@ -14,7 +14,7 @@ export default async function BlogPage() {
 
   if (error) {
     return (
-      <div className="mx-auto max-w-3xl px-6 py-16">
+      <div className="mx-auto max-w-5xl px-6 py-16">
         <p className="text-sm text-muted">
           Couldn&apos;t load posts: {error.message}
         </p>
@@ -25,7 +25,7 @@ export default async function BlogPage() {
   const list = (posts ?? []) as BlogPost[];
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-5xl px-6 py-16">
       <h1 className="mb-8 font-[family-name:var(--font-display)] text-2xl font-medium text-ink">
         Blog
       </h1>
