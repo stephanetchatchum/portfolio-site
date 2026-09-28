@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import type { BlogPost } from "@/lib/types";
+import { formatDay } from "@/lib/format";
 
 export default async function BlogPostPage({
   params,
@@ -24,21 +26,27 @@ export default async function BlogPostPage({
   const p = post as BlogPost;
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
-      <p className="mb-3 font-[family-name:var(--font-mono)] text-[0.78rem] text-muted">
-        {p.published_at &&
-          new Date(p.published_at).toLocaleDateString(undefined, {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
-      </p>
-      <h1 className="mb-8 font-[family-name:var(--font-display)] text-3xl font-medium text-ink">
+    <article className="mx-auto max-w-6xl px-5 pb-24 pt-[calc(72px+3rem)] sm:px-8 lg:pb-32">
+      <Link
+        href="/blog"
+        className="inline-flex items-center gap-2 font-mono text-[0.8125rem] text-muted transition-colors hover:text-cherenkov"
+      >
+        <span aria-hidden="true">&larr;</span> All posts
+      </Link>
+
+      <time
+        dateTime={p.published_at ?? undefined}
+        className="mt-8 block font-mono text-[0.8125rem] text-muted"
+      >
+        {formatDay(p.published_at)}
+      </time>
+      <h1 className="mt-4 max-w-[22ch] text-balance text-[clamp(2.25rem,5.5vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.035em] text-ink">
         {p.title}
       </h1>
-      <div className="max-w-[65ch] whitespace-pre-wrap text-[1.02rem] leading-[1.7] text-ink/90">
+      <div className="ruler mt-8 max-w-[65ch]" aria-hidden="true" />
+      <div className="mt-8 max-w-[65ch] whitespace-pre-wrap text-[1.0625rem] leading-[1.75] text-ink/90">
         {typeof p.content === "string" ? p.content : ""}
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,6 +1,5 @@
-// A quiet nod to the orbital-mechanics/simulation work — not decoration for
-// its own sake, but the one recurring visual thread across the actual
-// projects (orbit predictor, n-body simulator, exoplanet classifier).
+// A quiet nod to the orbital-mechanics work: one elliptical orbit, a
+// central mass and a body on the path.
 export default function OrbitMark({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -8,6 +7,7 @@ export default function OrbitMark({ className = "" }: { className?: string }) {
       className={className}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <ellipse
         cx="32"
@@ -15,12 +15,12 @@ export default function OrbitMark({ className = "" }: { className?: string }) {
         rx="28"
         ry="12"
         stroke="currentColor"
-        strokeWidth="1"
-        strokeOpacity="0.35"
+        strokeWidth="2"
+        strokeOpacity="0.45"
         transform="rotate(-18 32 32)"
       />
-      <circle cx="32" cy="32" r="3.5" fill="currentColor" />
-      <circle cx="9" cy="24" r="2" fill="currentColor" />
+      <circle cx="32" cy="32" r="4" fill="#ff9f00" />
+      <circle cx="9" cy="24" r="3" fill="currentColor" />
     </svg>
   );
 }
